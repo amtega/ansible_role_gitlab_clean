@@ -1,2 +1,66 @@
 ---
 # Role default lower priority variables
+
+# Gitlab server uri
+
+gitlab_clean_server: https://gitlab.acme.com
+
+# Gitalb server API version tu use
+
+gitlab_clean_api_version: 4
+
+# Gitlab token for user authentication
+
+gitlab_clean_token: mytoken
+
+# Clean or not project forks
+
+gitlab_clean_forks: no
+
+# Clean only owned projects
+
+gitlab_clean_owned_projects: yes
+
+# Regular expression for the name of the project forks to clean
+
+gitlab_clean_forks_name_regex: .*
+
+# Clean forks created the specified seconds ago (or more)
+
+gitlab_clean_forks_created_seconds_ago: 0
+
+# Clean forks with last activity the specified seconds ago (or more)
+
+gitlab_clean_forks_last_activity_seconds_ago: 60
+
+# Clean or not merge requests
+
+gitlab_clean_mr: no
+
+# Scope of the mr to gather facts. Can be created_by_me, assigned_to_me or all
+
+gitlab_clean_mr_scope: created_by_me
+
+# Regular expression for the author username of the merge requests to clean
+
+gitlab_clean_mr_author_username_regex: .*
+
+# Regular expression for the title of the merge requests to clean
+
+gitlab_clean_mr_title_regex: .*
+
+# Clean merge requests created the specified seconds ago (or more)
+
+gitlab_clean_mr_created_seconds_ago: 0
+
+# Clean merge requests updated at the specified seconds ago (or more)
+
+gitlab_clean_mr_updated_at_seconds_ago: 60
+
+# Validate server certificates
+
+gitlab_clean_validate_certs: yes
+
+# Hide sensitive information
+
+gitlab_clean_no_log: yes

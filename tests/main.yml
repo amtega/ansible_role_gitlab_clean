@@ -1,2 +1,34 @@
 ---
 # Tasks for testing role
+
+- name: Run idempotence test
+  hosts: localhost
+  roles:
+    - role: amtega.docker_presets
+      vars:
+        docker_presets_images_json_query: >-
+          [? starts_with(name, `centos-7`)]
+
+    - role: amtega.docker_sandbox
+      vars:
+        docker_sandbox_state: started
+        docker_sandbox_idempotence_test: no
+  tags:
+    - sandbox
+
+- name: Test gitlab_clean role
+  hosts: docker_sandbox_containers
+  roles:
+    - role: amtega.gitlab_clean
+  tags:
+    - idempotence
+
+- name: Cleanup docker docker sandbox
+  hosts: localhost
+  roles:
+    - role: amtega.docker_sandbox
+      vars:
+        docker_sandbox_state: absent
+  tags:
+    - cleanup
+    - sandbox

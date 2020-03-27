@@ -1,2 +1,15 @@
 ---
 # Role tasks
+
+- block:
+    - include_tasks: forks.yml
+      when: gitlab_clean_forks | bool
+      tags:
+        - role::gitlab_clean::forks
+
+    - include_tasks: mr.yml
+      when: gitlab_clean_mr | bool
+      tags:
+        - role::gitlab_clean::mr
+  tags:
+    - role::gitlab_clean

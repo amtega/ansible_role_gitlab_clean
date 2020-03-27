@@ -1,2 +1,5 @@
 ---
 # Role variables
+
+gitlab_clean_api_url: >-
+  {{ gitlab_clean_server }}/api/v{{ gitlab_clean_api_version | string }}
