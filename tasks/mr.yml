@@ -2,7 +2,7 @@
 # Merge requests cleanup tasks
 
 - block:
-    - name: Cleanup forks
+    - name: Cleanup merge requests
       uri:
         url: >-
           {{ gitlab_clean_api_url
