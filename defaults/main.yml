@@ -25,6 +25,10 @@ gitlab_clean_owned_projects: yes
 
 gitlab_clean_forks_name_regex: .*
 
+# Regular expression for the path with namespace of the project forks to clean
+
+gitlab_clean_forks_path_with_namespace_regex: .*
+
 # Clean forks created the specified seconds ago (or more)
 
 gitlab_clean_forks_created_seconds_ago: 0

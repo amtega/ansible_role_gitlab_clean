@@ -20,17 +20,19 @@ galaxy_info:
 
 dependencies:
   - role: amtega.gitlab_projects_fact
+    when: gitlab_clean_forks | bool
     vars:
-      gitlab_projects_fact_server: "{{ grp_all_gitlab_server }}"
-      gitlab_projects_fact_api_version: "{{ grp_all_gitlab_api_version }}"
-      gitlab_projects_fact_token: "{{ grp_all_ansible_gitlab_token }}"
+      gitlab_projects_fact_server: "{{ gitlab_clean_server }}"
+      gitlab_projects_fact_api_version: "{{ gitlab_clean_api_version }}"
+      gitlab_projects_fact_token: "{{ gitlab_clean_token }}"
       gitlab_projects_fact_owned: "{{ gitlab_clean_owned_projects }}"
       gitlab_projects_fact_validate_certs: "{{ gitlab_clean_validate_certs }}"
 
   - role: amtega.gitlab_mr_fact
+    when: gitlab_clean_mr | bool
     vars:
-      gitlab_mr_fact_server: "{{ grp_all_gitlab_server }}"
-      gitlab_mr_fact_api_version: "{{ grp_all_gitlab_api_version }}"
-      gitlab_mr_fact_token: "{{ grp_all_ansible_gitlab_token }}"
+      gitlab_mr_fact_server: "{{ gitlab_clean_server }}"
+      gitlab_mr_fact_api_version: "{{ gitlab_clean_api_version }}"
+      gitlab_mr_fact_token: "{{ gitlab_clean_token }}"
       gitlab_mr_fact_fact_scope: "{{ gitlab_clean_mr_scope }}"
       gitlab_mr_fact_validate_certs: "{{ gitlab_clean_validate_certs }}"

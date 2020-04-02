@@ -8,9 +8,9 @@
           {{ gitlab_clean_api_url }}/projects/{{ gitlab_clean_project_item.id }}
         method: DELETE
         headers:
-          "Private-Token": "{{ gitlab_fork_token }}"
+          "Private-Token": "{{ gitlab_clean_token }}"
         return_content: yes
-        validate_certs: "{{ gitlab_fork_validate_certs }}"
+        validate_certs: "{{ gitlab_clean_validate_certs }}"
         status_code: 202
       register: gitlab_clean_result
       changed_when: gitlab_clean_result.status == 202
@@ -19,6 +19,9 @@
            | selectattr("forked_from_project", "defined")
            | rejectattr("forked_from_project", "equalto", none)
            | selectattr("name", "search", gitlab_clean_forks_name_regex)
+           | selectattr("path_with_namespace",
+                        "search",
+                        gitlab_clean_forks_path_with_namespace_regex)
            | selectattr("created_at",
                         "gitlab_clean_older",
                         gitlab_clean_forks_created_seconds_ago)
