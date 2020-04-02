@@ -12,12 +12,12 @@
              + gitlab_clean_mr_item.iid | string }}
         method: PUT
         headers:
-          "Private-Token": "{{ gitlab_fork_token }}"
+          "Private-Token": "{{ gitlab_clean_token }}"
         body_format: json
         body:
           state_event: close
         return_content: yes
-        validate_certs: "{{ gitlab_fork_validate_certs }}"
+        validate_certs: "{{ gitlab_clean_validate_certs }}"
         status_code: 200
       register: gitlab_clean_mr_result
       changed_when: gitlab_clean_mr_result.status == 202
