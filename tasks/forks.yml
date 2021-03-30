@@ -11,7 +11,9 @@
           "Private-Token": "{{ gitlab_clean_token }}"
         return_content: yes
         validate_certs: "{{ gitlab_clean_validate_certs }}"
-        status_code: 202
+        status_code:
+          - 202
+          - 404
       register: gitlab_clean_result
       changed_when: gitlab_clean_result.status == 202
       loop: >-
