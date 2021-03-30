@@ -18,7 +18,9 @@
           state_event: close
         return_content: yes
         validate_certs: "{{ gitlab_clean_validate_certs }}"
-        status_code: 200
+        status_code:
+          - 200
+          - 404
       register: gitlab_clean_mr_result
       changed_when: gitlab_clean_mr_result.status == 202
       loop: >-
