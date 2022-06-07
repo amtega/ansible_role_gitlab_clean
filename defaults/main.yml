@@ -21,6 +21,10 @@ gitlab_clean_forks: no
 
 gitlab_clean_owned_projects: yes
 
+# Clean only projects where user is member
+
+gitlab_clean_membership_projects: yes
+
 # Regular expression for the name of the project forks to clean
 
 gitlab_clean_forks_name_regex: .*
