@@ -1,9 +1,9 @@
 ---
-# Merge requests cleanup tasks
 
-- block:
+- name: Cleanup merge requests
+  block:
     - name: Cleanup merge requests
-      uri:
+      ansible.builtin.uri:
         url: >-
           {{ gitlab_clean_api_url
              + "/projects/"
